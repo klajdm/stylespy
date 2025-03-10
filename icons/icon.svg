@@ -1,0 +1,11 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Magnifying glass handle -->
+  <path d="M82 94 L108 120" stroke="#666666" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Magnifying glass circle -->
+  <circle cx="55" cy="55" r="35" fill="none" stroke="#666666" stroke-width="12"/>
+  
+  <!-- Code brackets -->
+  <path d="M45 45 L35 55 L45 65" stroke="#666666" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M65 45 L75 55 L65 65" stroke="#666666" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg> 

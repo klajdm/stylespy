@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        width: 400px;
+        height: 500px;
+        margin: 0;
+        font-family: Consolas, Lucida Console, monospace;
+        background: #202124;
+        color: #bdc6cf;
+        overflow: hidden;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .panel {
+        flex: 1;
+        padding: 10px;
+        overflow: auto;
+        border-bottom: 1px solid #3c4043;
+      }
+      .title {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #fff;
+        border-bottom: 1px solid #3c4043;
+        padding-bottom: 5px;
+        position: sticky;
+        top: 0;
+        background: #202124;
+      }
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      /* Chrome DevTools-style syntax highlighting */
+      /* HTML Colors */
+      .angle {
+        color: #808080;
+      } /* < and > symbols */
+      .tag {
+        color: #5db0d7;
+      } /* Tag names */
+      .attr-name {
+        color: #9bbbdc;
+      } /* Attribute names */
+      .attr-equals {
+        color: #808080;
+      } /* = symbol */
+      .attr-value {
+        color: #ffa759;
+      } /* Attribute values */
+      .text {
+        color: #bdc6cf;
+      } /* Plain text */
+
+      /* CSS Colors */
+      .comment {
+        color: #808080;
+      } /* Comments */
+      .selector {
+        color: #5db0d7;
+      } /* Selectors */
+      .property {
+        color: #9bbbdc;
+      } /* Properties */
+      .colon {
+        color: #808080;
+      } /* Colons */
+      .value {
+        color: #ffa759;
+      } /* Values */
+      .bracket {
+        color: #808080;
+      } /* Brackets */
+
+      /* Additional styles */
+      .group-title {
+        color: #808080;
+        font-style: italic;
+      }
+
+      /* Scrollbar styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #202124;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #3c4043;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4c5053;
+      }
+
+      /* Add these new styles */
+      .toggle-button {
+        width: 100%;
+        padding: 10px;
+        background: #2c2c2c;
+        color: #fff;
+        border: none;
+        border-bottom: 1px solid #3c4043;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 12px;
+        outline: none;
+      }
+
+      .toggle-button:hover {
+        background: #3c3c3c;
+      }
+
+      .toggle-button.active {
+        background: #264f78;
+      }
+
+      .container {
+        height: calc(100% - 35px); /* Adjust for button height */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel">
+        <div class="title">HTML</div>
+        <pre id="html-content"></pre>
+      </div>
+      <div class="panel">
+        <div class="title">CSS</div>
+        <pre id="css-content"></pre>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
