@@ -4,6 +4,24 @@ console.log("Background script loaded");
 let lastDetails = null;
 let isInspectorActive = false;
 
+// Set initial title for all tabs
+chrome.tabs.query({}, (tabs) => {
+  tabs.forEach((tab) => {
+    chrome.action.setTitle({
+      title: "StyleSpy: Inactive",
+      tabId: tab.id,
+    });
+  });
+});
+
+// Set title for new tabs
+chrome.tabs.onCreated.addListener((tab) => {
+  chrome.action.setTitle({
+    title: "StyleSpy: Inactive",
+    tabId: tab.id,
+  });
+});
+
 // Function to ensure content script is loaded and send message
 async function ensureContentScriptAndSendMessage(tabId, message) {
   try {
@@ -34,21 +52,27 @@ chrome.action.onClicked.addListener(async (tab) => {
       state: isInspectorActive,
     });
 
-    // Update icon - use color version when active
-    await chrome.action.setIcon({
-      path: isInspectorActive
-        ? {
-            16: "icons/icon-color16.png",
-            48: "icons/icon-color48.png",
-            128: "icons/icon-color128.png",
-          }
-        : {
-            16: "icons/icon16.png",
-            48: "icons/icon48.png",
-            128: "icons/icon128.png",
-          },
-      tabId: tab.id,
-    });
+    // Update icon and title based on state
+    await Promise.all([
+      chrome.action.setIcon({
+        path: isInspectorActive
+          ? {
+              16: "icons/icon-color16.png",
+              48: "icons/icon-color48.png",
+              128: "icons/icon-color128.png",
+            }
+          : {
+              16: "icons/icon16.png",
+              48: "icons/icon48.png",
+              128: "icons/icon128.png",
+            },
+        tabId: tab.id,
+      }),
+      chrome.action.setTitle({
+        title: isInspectorActive ? "StyleSpy: Active" : "StyleSpy: Inactive",
+        tabId: tab.id,
+      }),
+    ]);
   } catch (error) {
     console.error("Error in click handler:", error);
     isInspectorActive = !isInspectorActive;
